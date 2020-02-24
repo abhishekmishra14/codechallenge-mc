@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property name="LOG_LOCATION" value="logs/cc_cc.log" />
+	
+	<springProfile name="local">
+		<appender name="RollingFileAppender"
+			class="ch.qos.logback.core.rolling.RollingFileAppender">
+			<file>${LOG_LOCATION}</file>
+
+			<rollingPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+				<fileNamePattern>logs/archived/cc_cc.log_%d{yyyy-MM-dd}.%i
+				</fileNamePattern>
+				<maxFileSize>1MB</maxFileSize>
+			</rollingPolicy>
+			<encoder>
+				<pattern>%d %p %c{1.} [%t] %m%n</pattern>
+			</encoder>
+		</appender>
+
+		<logger name="com.codechallenge" level="DEBUG">
+			<appender-ref ref="RollingFileAppender" />
+		</logger>
+	</springProfile>
+</configuration>
