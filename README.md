@@ -41,6 +41,7 @@ Then -
 Response return as "NO"
  
 Implementation details -  
+
 Spring boot app to find connection between two cities as per the given data in the form of input csm file.
 Endpoint exposed as a REST api, please refer details documentation.
 
@@ -57,5 +58,18 @@ http://localhost:8080/connected/NJ/NYC
 
 API respond with ‘yes’ if origin is connected to destination, ’no’ if origin is not connected to destination.
 Any unexpected input should result in a ’no’ response.
+
+Unit Testing - 
+Performed unit testing using spring boot test - SpringBootTest. 
+
+Instructions - 
+1. Clone git project and import project as maven project.
+2. Build project running command - mvn install. Spring profile is used when project is build. 
+Default spring is currently set as local.
+3. ConnectMainApplication - Run as spring boot app.
+
+TODO -
+1. Use custom cache to store input file data during application start.
+2. Expose endpoint to provide flexibility to update/clear/add cache during application running.
 
 
