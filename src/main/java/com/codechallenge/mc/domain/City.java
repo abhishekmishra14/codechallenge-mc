@@ -36,7 +36,7 @@ public class City {
 		builder.append("destination", destination);
 		return builder.toString();
 	}
-	
+
 	@Override
 	public int hashCode() {
 		HashCodeBuilder hashCodeBuilder = new HashCodeBuilder();
@@ -44,7 +44,7 @@ public class City {
 		hashCodeBuilder.append(destination);
 		return hashCodeBuilder.toHashCode();
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {

@@ -1,5 +1,6 @@
 package com.codechallenge.mc.controller;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,8 @@ public class ConnectedRestController {
 		CCEnum apiResponse = CCEnum.NO;
 		boolean isCitiesValid = isCitiesValid(origin, destination);
 		if (isCitiesValid) {
+			origin = StringUtils.replace(origin, "%20", " ").toLowerCase();
+			destination = StringUtils.replace(destination, "%20", " ").toLowerCase();
 			boolean isCitiesConnected = discoverCityConnection.findCitiesConnection(origin, destination);
 			if (isCitiesConnected) {
 				apiResponse = CCEnum.YES;
@@ -55,7 +58,8 @@ public class ConnectedRestController {
 		CCEnum apiResponse = CCEnum.NO;
 		boolean isCitiesValid = isCitiesValid(origin, destination);
 		if (isCitiesValid) {
-			boolean isCitiesConnected = discoverCityConnection.findCitiesConnection(origin.toLowerCase(), destination.toLowerCase());
+			boolean isCitiesConnected = discoverCityConnection.findCitiesConnection(origin.toLowerCase(),
+					destination.toLowerCase());
 			if (isCitiesConnected) {
 				apiResponse = CCEnum.YES;
 			}
