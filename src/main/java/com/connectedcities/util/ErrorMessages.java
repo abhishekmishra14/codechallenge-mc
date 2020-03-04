@@ -1,4 +1,4 @@
-package com.codechallenge.mc.util;
+package com.connectedcities.util;
 
 public enum ErrorMessages {
 	CC_INPUT_FILE_NOT_FOUND("Input file citi.txt not found."), CC_INPUT_FILE_EMPTY("Input file citi.txt is empty."),

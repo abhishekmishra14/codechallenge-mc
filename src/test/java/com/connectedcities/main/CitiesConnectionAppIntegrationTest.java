@@ -1,40 +1,31 @@
-package com.codechallenge.mc.controller;
+package com.connectedcities.main;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.servlet.MockMvc;
 
-import com.codechallenge.mc.main.ConnectMainApplication;
-import com.codechallenge.mc.util.CCEnum;
+import com.connectedcities.util.CCEnum;
 
-@SpringBootTest(classes = { ConnectMainApplication.class })
-@AutoConfigureMockMvc
-class ConnectedRestControllerTest {
+class CitiesConnectionAppIntegrationTest extends BaseIntegrationTest {
 
 	private static final String ENDPOINT = "/connected";
 	private static final String INPUT_PARAM_ORIGIN = "origin";
 	private static final String INPUT_PARAM_DESTINATION = "destination";
 	private static final String NULL_STRING = "NULL";
 	private static final String INVALID_STRING = "1234";
-	
-	@Autowired
-	private MockMvc mockMvc;
 
-	@Autowired
-	private ConnectedRestController ConnectedRestController;
+	@BeforeEach
+	void setUp() throws Exception {
+	}
 
-	@Test
-	public void contextLoads() throws Exception {
-		assertThat(ConnectedRestController).isNotNull();
+	@AfterEach
+	void tearDown() throws Exception {
 	}
 
 	@Test
@@ -86,11 +77,12 @@ class ConnectedRestControllerTest {
 				.andDo(print()).andExpect(status().isOk())
 				.andExpect(content().string(containsString(CCEnum.NO.name())));
 	}
-	
+
 	@Test
 	public void testInputRequestParamOriginCityContainsWhiteSpace() throws Exception {
 		this.mockMvc
-				.perform(get(ENDPOINT).param(INPUT_PARAM_ORIGIN, "New York").param(INPUT_PARAM_DESTINATION, "Philadelphia"))
+				.perform(get(ENDPOINT).param(INPUT_PARAM_ORIGIN, "New York").param(INPUT_PARAM_DESTINATION,
+						"Philadelphia"))
 				.andDo(print()).andExpect(status().isOk())
 				.andExpect(content().string(containsString(CCEnum.YES.name())));
 	}
@@ -103,15 +95,13 @@ class ConnectedRestControllerTest {
 				.andExpect(content().string(containsString(CCEnum.YES.name())));
 	}
 
-	
 	@Test
 	public void testInputRequestParamOriginAndDestinationCitySame() throws Exception {
 		this.mockMvc.perform(get(ENDPOINT).param(INPUT_PARAM_ORIGIN, "NJ").param(INPUT_PARAM_DESTINATION, "NJ"))
 				.andDo(print()).andExpect(status().isOk())
 				.andExpect(content().string(containsString(CCEnum.NO.name())));
 	}
-	
-	
+
 	@Test
 	public void testCitiesConnectedByPathtParamEndpointStatus() throws Exception {
 		this.mockMvc.perform(get(ENDPOINT + "/NJ/NYC")).andDo(print()).andExpect(status().isOk());
@@ -140,7 +130,7 @@ class ConnectedRestControllerTest {
 		this.mockMvc.perform(get(ENDPOINT + "/NJ/" + INVALID_STRING)).andDo(print()).andExpect(status().isOk())
 				.andExpect(content().string(containsString(CCEnum.NO.name())));
 	}
-	
+
 	@Test
 	public void testPathParamOriginCityContainsWhiteSpace() throws Exception {
 		this.mockMvc.perform(get(ENDPOINT + "/New York/Philadelphia")).andDo(print()).andExpect(status().isOk())
@@ -153,7 +143,6 @@ class ConnectedRestControllerTest {
 				.andExpect(content().string(containsString(CCEnum.YES.name())));
 	}
 
-	
 	@Test
 	public void testPathParamOriginAndDestinationCitySame() throws Exception {
 		this.mockMvc.perform(get(ENDPOINT + "/NJ/NJ")).andDo(print()).andExpect(status().isOk())

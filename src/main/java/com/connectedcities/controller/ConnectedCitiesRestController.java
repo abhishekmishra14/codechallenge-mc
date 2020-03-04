@@ -1,4 +1,4 @@
-package com.codechallenge.mc.controller;
+package com.connectedcities.controller;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.codechallenge.mc.service.DiscoverCitiesConnection;
-import com.codechallenge.mc.util.CCEnum;
-import com.codechallenge.mc.util.CCUtils;
+import com.connectedcities.service.DiscoverCitiesConnection;
+import com.connectedcities.util.CCEnum;
+import com.connectedcities.util.CCUtils;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 @RestController
-public class ConnectedRestController {
+public class ConnectedCitiesRestController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(ConnectedRestController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ConnectedCitiesRestController.class);
 
 	@Autowired
 	DiscoverCitiesConnection discoverCityConnection;

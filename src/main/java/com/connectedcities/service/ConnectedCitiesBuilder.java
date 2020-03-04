@@ -1,9 +1,9 @@
-package com.codechallenge.mc.service;
+package com.connectedcities.service;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.codechallenge.mc.domain.City;
+import com.connectedcities.domain.City;
 
 public class ConnectedCitiesBuilder {
 
@@ -19,14 +19,13 @@ public class ConnectedCitiesBuilder {
 	}
 
 	public void build() {
-		String[] connecteditiesRecord = record.split(",");
-		String originCity = connecteditiesRecord[0].toLowerCase();
-		String destinationCity = connecteditiesRecord[1].toLowerCase();
-		City city = new City(originCity, destinationCity);
-		String key = originCity + "~" + destinationCity;
-		if (!connectedCitiesMap.containsKey(key)) {
-			connectedCitiesMap.put(key, city);
-		}
+		/*
+		 * String[] connecteditiesRecord = record.split(","); String originCity =
+		 * connecteditiesRecord[0].toLowerCase(); String destinationCity =
+		 * connecteditiesRecord[1].toLowerCase(); City city = new City(originCity,
+		 * destinationCity); String key = originCity + "~" + destinationCity; if
+		 * (!connectedCitiesMap.containsKey(key)) { connectedCitiesMap.put(key, city); }
+		 */
 	}
 
 	public static Map<String, City> getConnectedcitiesmap() {

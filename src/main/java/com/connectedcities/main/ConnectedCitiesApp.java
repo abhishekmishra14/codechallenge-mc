@@ -1,4 +1,4 @@
-package com.codechallenge.mc.main;
+package com.connectedcities.main;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -7,11 +7,11 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-@ComponentScan(basePackages = "com.codechallenge.mc")
-public class ConnectMainApplication {
+@ComponentScan(basePackages = "com.connectedcities")
+public class ConnectedCitiesApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ConnectMainApplication.class, args);
+		SpringApplication.run(ConnectedCitiesApp.class, args);
 	}
 
 }

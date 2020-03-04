@@ -1,4 +1,4 @@
-package com.codechallenge.mc.service;
+package com.connectedcities.service;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -16,14 +16,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ConnectedCitiesLoaderService {
+public class CityLoaderService {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(ConnectedCitiesLoaderService.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(CityLoaderService.class);
 
+	/**
+	 * 
+	 * @param inputCCFile
+	 */
 	public void loadFileData(File inputCCFile) {
 		MappedByteBuffer mBytebuffer = null;
 		FileChannel fChannel = null;
-		ConnectedCitiesBuilder builder;
 		String line;
 		try (FileInputStream fInputStream = new FileInputStream(inputCCFile)) {
 			fChannel = fInputStream.getChannel();

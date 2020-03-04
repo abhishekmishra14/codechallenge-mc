@@ -1,5 +1,9 @@
 Boston,New York
 Philadelphia,Newark
 Newark,Boston
+Newark,New York
+Newark,CT
+Newark,Philadelphia
+Newark,Boston
 Trenton,Albany
 New York,Philadelphia

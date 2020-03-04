@@ -1,4 +1,4 @@
-package com.codechallenge.mc.util;
+package com.connectedcities.util;
 
 import java.io.File;
 
@@ -10,6 +10,7 @@ public class CCUtils {
 	private static final Logger LOGGER = LoggerFactory.getLogger(CCUtils.class);
 
 	public static final String CONNECTED_CITIES_FILENAME = "citi.txt";
+	public static final String DELIMETER = ",";
 
 	public static boolean isEmptyRequestParam(String originCity, String destinationCity) {
 		boolean isNullRequestParam = false;
@@ -51,10 +52,10 @@ public class CCUtils {
 
 	public static boolean isValidCCFile(File inputCCFile) {
 		boolean isValidFile = true;
-		if (!inputCCFile.exists()) {
+		if (inputCCFile != null && !inputCCFile.exists()) {
 			LOGGER.error("Input file is not valid." + ErrorMessages.CC_INPUT_FILE_NOT_FOUND);
 			isValidFile = false;
-		} else if (inputCCFile.length() == 0) {
+		} else if (inputCCFile != null && inputCCFile.length() == 0) {
 			LOGGER.error("Input file is empty." + ErrorMessages.CC_INPUT_FILE_EMPTY);
 			isValidFile = false;
 		}
