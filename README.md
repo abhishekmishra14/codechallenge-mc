@@ -1,4 +1,4 @@
-# codechallenge-mc boot 
+# connected cities-mc boot 
 
 Story - 
 Two cities are considered to be connected, if Source and destination cities are connected. 
