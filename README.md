@@ -1,4 +1,4 @@
-# connected cities-mc boot 
+# connected cities 
 
 Story - 
 Two cities are considered to be connected, if Source and destination cities are connected. 
